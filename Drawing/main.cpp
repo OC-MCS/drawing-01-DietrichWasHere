@@ -1,5 +1,7 @@
 //================================================
-// YOUR NAME GOES HERE <-----------------  
+// Dietrich Versaw
+// Drawing Program
+// Due 3/25/19
 //================================================
 #include <iostream>
 #include <fstream>
