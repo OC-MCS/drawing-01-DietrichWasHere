@@ -33,10 +33,7 @@ public:
 		shapeInfo.pos = nPos;
 		shapeInfo.color = nColor;
 	}
-	virtual void draw(RenderWindow& win)
-	{
-
-	}
+	virtual void draw(RenderWindow& win);
 	virtual ShapeData getFileRecord()
 	{
 		return shapeInfo;

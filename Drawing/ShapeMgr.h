@@ -17,11 +17,6 @@ public:
 	{
 
 	}
-
-	void loadFile(iostream &strObj)
-	{
-
-	}
 	void addShape(Vector2f pos, ShapeEnum whichShape, Color color)
 	{
 		DrawingShape* nShape = nullptr;
@@ -34,5 +29,26 @@ public:
 
 		}
 		shapeList.push_back(nShape);
+	}
+	void addShape(ShapeData sd)
+	{
+		DrawingShape* nShape = nullptr;
+		if (sd.sdShape == CIRCLE)
+		{
+
+		}
+		else
+		{
+
+		}
+		shapeList.push_back(nShape);
+	}
+	void loadFile(iostream &strObj)
+	{
+
+	}
+	void saveFile(iostream &strObj)
+	{
+
 	}
 };
