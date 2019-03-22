@@ -28,10 +28,19 @@ public:
 	{
 		return curColor;
 	}
-	// return current shape
+
 	ShapeEnum getCurShape()
 	{
 		return curShape;
+	}
+	void setCurColor(Color nColor)
+	{
+		curColor = nColor;
+	}
+
+	void setCurShape(ShapeEnum nShape)
+	{
+		curShape = nShape;
 	}
 
 };
