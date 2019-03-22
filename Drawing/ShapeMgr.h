@@ -11,16 +11,28 @@ using namespace sf;
 class ShapeMgr
 {
 private:
-	
+	vector<DrawingShape *> shapeList;
 public:
 	ShapeMgr()
 	{
-		
+
 	}
 
-	void addShape(Vector2f pos, ShapeEnum whichShape, Color color)
+	void loadFile(iostream &strObj)
 	{
 
 	}
+	void addShape(Vector2f pos, ShapeEnum whichShape, Color color)
+	{
+		DrawingShape* nShape = nullptr;
+		if (whichShape == CIRCLE)
+		{
+			
+		}
+		else
+		{
 
+		}
+		shapeList.push_back(nShape);
+	}
 };

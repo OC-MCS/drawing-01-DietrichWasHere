@@ -1,31 +1,37 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include <iostream>
+#include "Shape.h"
 using namespace std;
 using namespace sf;
 
-enum ShapeEnum { CIRCLE, SQUARE };
 
+// Shape Enum moved to shape object file
 // finish this code; add functions, data as needed
 
 class SettingsMgr
 {
 private:
-	
+	Color curColor;
+	ShapeEnum curShape;
 public:
+	// constructor - for deafault
 	SettingsMgr(Color startingColor, ShapeEnum startingShape )
 	{
+		curColor = startingColor;
+		curShape = startingShape;
 	}
-
+	void loadFromFile(iostream &strObj);
+	void saveToFile(iostream &strObj);
+	// return current color
 	Color getCurColor()
 	{
-		return Color::Blue; // just to make it compile 
+		return curColor;
 	}
-
-
+	// return current shape
 	ShapeEnum getCurShape()
 	{
-		return ShapeEnum::CIRCLE; // just to make it compile;
+		return curShape;
 	}
 
 };
