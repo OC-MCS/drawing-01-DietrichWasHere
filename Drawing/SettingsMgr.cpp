@@ -2,7 +2,7 @@
 #include <iostream>
 using namespace std;
 
-
+// load from the file given as input
 void SettingsMgr::loadFromFile(iostream &file)
 {
 	unsigned int nColor;
@@ -10,6 +10,7 @@ void SettingsMgr::loadFromFile(iostream &file)
 	curColor = Color(nColor);
 	file.read(reinterpret_cast<char *>(&curShape), sizeof(curShape));
 }
+// save to the file given as input
 void SettingsMgr::saveToFile(iostream &file)
 {
 	unsigned int colorOut;

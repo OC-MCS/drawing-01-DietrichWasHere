@@ -13,24 +13,27 @@ using namespace sf;
 class ShapeMgr
 {
 private:
-	vector<DrawingShape *> shapeList;
+	vector<DrawingShape *> shapeList; // hold the shapes! yes I tired
 public:
 	ShapeMgr()
 	{
 	}
+	// add a shape using the 3 needed variables to distinguish in the file
+	// position, circle or square, and color (R,B,G)
 	void addShape(Vector2f pos, ShapeEnum whichShape, Color color)
 	{
 		DrawingShape* nShape = nullptr;
 		if (whichShape == CIRCLE)
 		{
-			nShape = new Circle(pos, color);
+			nShape = new Circle(pos, color); // create a circle
 		}
 		else
 		{
-			nShape = new Square(pos, color);
+			nShape = new Square(pos, color); // create a square
 		}
-		shapeList.push_back(nShape);
+		shapeList.push_back(nShape); // add to vector / list
 	}
+	// same as above, but from a ShapeData struct, which contains all the necessary info; can be derived from file
 	void addShape(ShapeData sd)
 	{
 		DrawingShape* nShape = nullptr;
@@ -44,6 +47,7 @@ public:
 		}
 		shapeList.push_back(nShape);
 	}
+	// load shapes from file, recieved
 	void loadFile(iostream &file)
 	{
 		ShapeData nShape;
@@ -53,6 +57,7 @@ public:
 			addShape(nShape);
 		}
 	}
+	// save to file, which is passed by ref
 	void saveFile(iostream &file)
 	{
 		ShapeData shapeOut;

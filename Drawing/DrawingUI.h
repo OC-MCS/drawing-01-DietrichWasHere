@@ -10,13 +10,15 @@ using namespace sf;
 class DrawingUI
 {
 private:
-	Vector2f bounds;
-
+	Vector2f bounds; // Upper and left bounds, hopefully the window handles the other bounds well enough
 public:
+	// constructor creates bounds
 	DrawingUI(Vector2f p)
 	{
 		bounds = p;
 	}
+	// param: win, shape manager (for list)
+	// display list of shapes in window
 	void draw(RenderWindow& win, ShapeMgr *mgr)
 	{
 		const vector<DrawingShape *>* shapeList = mgr->getList();
@@ -25,6 +27,7 @@ public:
 			(*shapeList)[i]->draw(win);
 		}
 	}
+	// check if mouse is in bounds using mouse position
 	bool isMouseInCanvas(Vector2f mousePos)
 	{
 		bool inBounds = false;

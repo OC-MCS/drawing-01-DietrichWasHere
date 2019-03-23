@@ -21,23 +21,24 @@ void die(string msg)
 class SettingsUI
 {
 private:
-	SettingsMgr *mgr;
-	Font font;
-	Text colorTxt;
-	CircleShape redBtn;
-	CircleShape blueBtn;
-	CircleShape greenBtn;
-	Text shapeTxt;
-	CircleShape circleBtn;
-	RectangleShape sqrBtn;
-	RectangleShape uiBackground;
+	SettingsMgr *mgr; // ptr to ref settings manager, which holds settings
+	Font font; // for loading font
+	Text colorTxt; // text to indicate color opt
+	CircleShape redBtn; // select for red
+	CircleShape blueBtn; // select for blue
+	CircleShape greenBtn; // select for green
+	Text shapeTxt; // text above shape options
+	CircleShape circleBtn; // select for circles
+	RectangleShape sqrBtn; // select for squares
+	RectangleShape uiBackground; // distinguish between canvas and option panel
 	
 public:
+	// construct using presets and inputed ptr to settingsMgr
 	SettingsUI(SettingsMgr *nMgr)
 	{	
-		const int UI_WIDTH = 200;
-		const int UI_HEIGHT = 600;
-		const int RADIUS = 20;	
+		const int UI_WIDTH = 200; // width of ui panel
+		const int UI_HEIGHT = 600; // hieght of ui panel
+		const int RADIUS = 20;	// button size
 		mgr = nMgr;
 		uiBackground.setPosition(Vector2f(0, 0));
 		uiBackground.setOutlineColor(Color::Black);
@@ -45,6 +46,7 @@ public:
 		uiBackground.setSize(Vector2f(UI_WIDTH, UI_HEIGHT));
 		uiBackground.setFillColor(Color::White);
 		
+		// try loading font
 		if (!font.loadFromFile("C:\\Windows\\Fonts\\arial.ttf"))
 			die("couldn't load font");
 
@@ -69,6 +71,7 @@ public:
 		greenBtn.setOutlineThickness(2);
 		greenBtn.setOutlineColor(Color::Green);
 
+		// load presets
 		if (mgr->getCurColor() == Color::Red)
 		{
 			redBtn.setFillColor(Color::Red);
@@ -104,6 +107,7 @@ public:
 		sqrBtn.setSize(Vector2f(RADIUS * 2, RADIUS * 2));
 		sqrBtn.setOutlineColor(Color:: Black);
 
+		// load presets
 		if (mgr->getCurShape() == ShapeEnum::CIRCLE)
 		{
 			circleBtn.setFillColor(Color::Black);
@@ -115,6 +119,7 @@ public:
 			sqrBtn.setFillColor(Color::Black);
 		}
 	}
+	// use mouse position to determine ui action
 	void handleMouseUp(Vector2f mouse)
 	{
 		if (redBtn.getGlobalBounds().contains(mouse))
@@ -151,6 +156,7 @@ public:
 			sqrBtn.setFillColor(Color::Black);
 		}
 	}
+	// use win to draw all items
 	void draw(RenderWindow& win)
 	{
 		win.draw(uiBackground);
@@ -162,6 +168,8 @@ public:
 		win.draw(circleBtn);
 		win.draw(sqrBtn);
 	}
+	// hmmm... not sure the destructor is working
+	// fixed if you close out of the text window
 	~SettingsUI()
 	{
 		delete[] mgr;

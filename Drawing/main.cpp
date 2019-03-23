@@ -51,30 +51,35 @@ int main()
 
 	while (window.isOpen()) 
 	{
-		Event event;
+		Event event; // to hold mouse actions for each frame
 		while (window.pollEvent(event))
 		{
 			if (event.type == Event::Closed)
 			{
+				// overwrite the old file
+				// not entirely sure how it overwrites all the other shapes, but it does
+				// no remnants from previous file
+				// I guess bringing it in as read only erases the entirety of the file...?
+				// yes, I realise this assumptiveness is a poor attitude for programming
 				window.close();
 				file.open("shapes.bin", ios::out | ios::binary);
 				settingsMgr.saveToFile(file);
 				shapeMgr.saveFile(file);
 				file.close();
-				// ****** Add code here to write all data to shapes file
+				// write all data to shapes file
 			}
 			else if (event.type == Event::MouseButtonReleased)
 			{
 				// maybe they just clicked on one of the settings "buttons"
-				// check for this and handle it.
+				// check for this and handle it. Done!
 				Vector2f mousePos = window.mapPixelToCoords(Mouse::getPosition(window));
+				// get mouse location for, check for clicking of ui
 				settingsUI.handleMouseUp(mousePos);
 			}
 			else if (event.type == Event::MouseMoved && Mouse::isButtonPressed(Mouse::Button::Left))
 			{
-				
 				Vector2f mousePos = window.mapPixelToCoords(Mouse::getPosition(window));
-				// check to see if mouse is in the drawing area
+				// check to see if mouse is in the drawing area, using the vector2f
 				if (drawingUI.isMouseInCanvas(mousePos))
 				{
 					// add a shape to the list based on current settings

@@ -12,7 +12,7 @@ private:
 	CircleShape stamp;
 public:
 	// constructor; used in other classes constructors;
-
+	// create circle from location, color
 	Circle(Vector2f nPos, Color nColor) : DrawingShape(CIRCLE)
 	{
 		const int RADIUS = 20;
@@ -22,10 +22,12 @@ public:
 		stamp.setOutlineColor(nColor);
 		stamp.setFillColor(Color::Transparent);
 	}
+	// draw the circle
 	virtual void draw(RenderWindow& win)
 	{
 		win.draw(stamp);
 	}
+	// return a shapedata full of the circle's info
 	virtual ShapeData getFileRecord()
 	{
 		ShapeData data;

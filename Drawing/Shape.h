@@ -24,23 +24,25 @@ struct ShapeData
 class DrawingShape 
 {
 private:
-	ShapeEnum dsShape;
+	ShapeEnum dsShape; // enable distinguishing between derived classes when loaded from file
 public:
 	// constructor; used in other classes constructors;
-
+	// initialize enumerated shape value
 	DrawingShape(ShapeEnum nShape)
 	{
 		dsShape = nShape;
 	}
+	// allow access to enumerated shape's value, even thoug its private
 	ShapeEnum getShape()
 	{
 		return dsShape;
 	}
+	// virtual functions, so that these functions can be used by inheriting classes at same location
 	virtual void draw(RenderWindow& win) =0;
 	virtual ShapeData getFileRecord() = 0;
 };
 
 // add Circle, Square classes below. These are derived from DrawingShape
-
+// o. ohhhhhhhhh....... whoops. see other files
 
 

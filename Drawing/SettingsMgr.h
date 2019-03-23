@@ -12,10 +12,10 @@ using namespace sf;
 class SettingsMgr
 {
 private:
-	Color curColor;
-	ShapeEnum curShape;
+	Color curColor; // hold color for all new shapes
+	ShapeEnum curShape; // hold shape for new shapes
 public:
-	// constructor - for deafault
+	// constructor - for deafault values, using direct color, shape inputs
 	SettingsMgr(Color startingColor, ShapeEnum startingShape )
 	{
 		curColor = startingColor;
@@ -28,16 +28,17 @@ public:
 	{
 		return curColor;
 	}
-
+	// return current shape
 	ShapeEnum getCurShape()
 	{
 		return curShape;
 	}
+	// set color
 	void setCurColor(Color nColor)
 	{
 		curColor = nColor;
 	}
-
+	// set shape
 	void setCurShape(ShapeEnum nShape)
 	{
 		curShape = nShape;

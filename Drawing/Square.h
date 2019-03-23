@@ -9,10 +9,10 @@ using namespace std;
 class Square : public DrawingShape
 {
 private:
-	RectangleShape stamp;
+	RectangleShape stamp; // square to draw
 public:
 	// constructor; used in other classes constructors;
-
+	// create the square from location, color
 	Square(Vector2f nPos, Color nColor) : DrawingShape(CIRCLE)
 	{
 		const int SIZE = 40;
@@ -22,10 +22,12 @@ public:
 		stamp.setOutlineColor(nColor);
 		stamp.setFillColor(Color::Transparent);
 	}
+	// draw the square in the window given
 	virtual void draw(RenderWindow& win)
 	{
 		win.draw(stamp);
 	}
+	// return a Shapedata full of the square's info
 	virtual ShapeData getFileRecord()
 	{
 		ShapeData data;
