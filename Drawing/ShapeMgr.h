@@ -44,13 +44,23 @@ public:
 		}
 		shapeList.push_back(nShape);
 	}
-	void loadFile(iostream &strObj)
+	void loadFile(iostream &file)
 	{
-
+		ShapeData nShape;
+		while (file.read(reinterpret_cast<char *>
+			(&nShape), sizeof(nShape)))
+		{
+			addShape(nShape);
+		}
 	}
-	void saveFile(iostream &strObj)
+	void saveFile(iostream &file)
 	{
-
+		ShapeData shapeOut;
+		for (int i = 0; i < (shapeList.size()); i++)
+		{
+			shapeOut = shapeList[i]->getFileRecord();
+			file.write(reinterpret_cast<char *>(&shapeOut), sizeof(shapeOut));
+		}
 	}
 	const vector<DrawingShape *>* getList()
 	{
