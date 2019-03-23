@@ -153,6 +153,7 @@
     <ClCompile Include="SettingsMgr.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Circle.h" />
     <ClInclude Include="DrawingUI.h" />
     <ClInclude Include="SettingsMgr.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
@@ -164,6 +165,7 @@
     <ClInclude Include="ShapeMgr.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
     </ClInclude>
+    <ClInclude Include="Square.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="shapes.bin" />

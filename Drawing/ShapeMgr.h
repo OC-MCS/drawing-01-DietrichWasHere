@@ -2,6 +2,8 @@
 #include <SFML/Graphics.hpp>
 #include <vector>
 #include "Shape.h"
+#include "Circle.h"
+#include "Square.h"
 
 using namespace std;
 using namespace sf;
@@ -22,11 +24,11 @@ public:
 		DrawingShape* nShape = nullptr;
 		if (whichShape == CIRCLE)
 		{
-			
+			nShape = new Circle(pos, color);
 		}
 		else
 		{
-
+			nShape = new Square(pos, color);
 		}
 		shapeList.push_back(nShape);
 	}
@@ -35,11 +37,11 @@ public:
 		DrawingShape* nShape = nullptr;
 		if (sd.sdShape == CIRCLE)
 		{
-
+			nShape = new Circle(sd.pos, Color(sd.color));
 		}
-		else
+		else if (sd.sdShape == SQUARE)
 		{
-
+			nShape = new Square(sd.pos, Color(sd.color));
 		}
 		shapeList.push_back(nShape);
 	}
@@ -50,5 +52,9 @@ public:
 	void saveFile(iostream &strObj)
 	{
 
+	}
+	const vector<DrawingShape *>* getList()
+	{
+		return &shapeList;
 	}
 };

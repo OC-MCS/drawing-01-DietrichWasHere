@@ -24,20 +24,20 @@ struct ShapeData
 class DrawingShape 
 {
 private:
-	ShapeData shapeInfo;
+	ShapeEnum dsShape;
 public:
 	// constructor; used in other classes constructors;
-	DrawingShape(ShapeEnum nShape, Vector2f nPos, unsigned int nColor)
+
+	DrawingShape(ShapeEnum nShape)
 	{
-		shapeInfo.sdShape = nShape;
-		shapeInfo.pos = nPos;
-		shapeInfo.color = nColor;
+		dsShape = nShape;
 	}
-	virtual void draw(RenderWindow& win);
-	virtual ShapeData getFileRecord()
+	ShapeEnum getShape()
 	{
-		return shapeInfo;
+		return dsShape;
 	}
+	virtual void draw(RenderWindow& win) =0;
+	virtual ShapeData getFileRecord() = 0;
 };
 
 // add Circle, Square classes below. These are derived from DrawingShape

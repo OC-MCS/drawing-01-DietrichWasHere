@@ -10,19 +10,29 @@ using namespace sf;
 class DrawingUI
 {
 private:
+	Vector2f bounds;
 
 public:
 	DrawingUI(Vector2f p)
 	{
+		bounds = p;
 	}
 
 	void draw(RenderWindow& win, ShapeMgr *mgr)
 	{
+		for (int i = 0; i < mgr->getList()->size; i++)
+		{
+			mgr->getList()[i]->draw(win);
+		}
 	}
-	
 	bool isMouseInCanvas(Vector2f mousePos)
 	{
-		return false; // just to make it compile
+		bool inBounds = false;
+		if ((mousePos.x > bounds.x) && (mousePos.y > bounds.y))
+		{
+			inBounds = true;
+		}
+		return inBounds; // just to make it compile
 	}
 
 };
