@@ -162,4 +162,8 @@ public:
 		win.draw(circleBtn);
 		win.draw(sqrBtn);
 	}
+	~SettingsUI()
+	{
+		delete[] mgr;
+	}
 };

@@ -18,9 +18,11 @@ using namespace sf;
 // add code, you shouldn't need to add any logic to main to satisfy
 // the requirements of this programming assignment
 
+// run the program
 int main()
 {
-	const int WINDOW_WIDTH = 800;
+	// declare size of window
+	const int WINDOW_WIDTH = 800; 
 	const int WINDOW_HEIGHT = 600;
 
 	RenderWindow window(VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "Drawing");
@@ -30,22 +32,21 @@ int main()
 	SettingsUI  settingsUI(&settingsMgr); 
 	ShapeMgr    shapeMgr;
 	DrawingUI   drawingUI(Vector2f(200, 50));
-	fstream file;
+	fstream file; // file storage
 	
 	// ********* Add code here to make the managers read from shapes file (if the file exists)
-	char loadFile;
-	cout << "Load file (Y / N)? ";
+	char loadFile; // char for user input to load file or start from scractch
+	cout << "Load file (Y / N)? Old will be overwritten regardless! ";
 	cin >> loadFile;
 
 
 	if (tolower(loadFile) == 'y')
 	{
+		// load file for reading
 		file.open("shapes.bin", ios::in | ios::out | ios::binary);
-
-	}
-	else
-	{
-		file.open("shapes.bin", ios::out | ios::binary);
+		settingsMgr.loadFromFile(file);
+		shapeMgr.loadFile(file);
+		file.close();
 	}
 
 	while (window.isOpen()) 
@@ -56,6 +57,10 @@ int main()
 			if (event.type == Event::Closed)
 			{
 				window.close();
+				file.open("shapes.bin", ios::out | ios::binary);
+				settingsMgr.saveToFile(file);
+				shapeMgr.saveFile(file);
+				file.close();
 				// ****** Add code here to write all data to shapes file
 			}
 			else if (event.type == Event::MouseButtonReleased)
