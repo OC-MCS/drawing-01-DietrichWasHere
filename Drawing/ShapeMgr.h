@@ -17,7 +17,6 @@ private:
 public:
 	ShapeMgr()
 	{
-
 	}
 	void addShape(Vector2f pos, ShapeEnum whichShape, Color color)
 	{

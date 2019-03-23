@@ -17,12 +17,12 @@ public:
 	{
 		bounds = p;
 	}
-
 	void draw(RenderWindow& win, ShapeMgr *mgr)
 	{
-		for (int i = 0; i < mgr->getList()->size; i++)
+		const vector<DrawingShape *>* shapeList = mgr->getList();
+		for (int i = 0; i < (shapeList->size()); i++)
 		{
-			mgr->getList()[i]->draw(win);
+			(*shapeList)[i]->draw(win);
 		}
 	}
 	bool isMouseInCanvas(Vector2f mousePos)

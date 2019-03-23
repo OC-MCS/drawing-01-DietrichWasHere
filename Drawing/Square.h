@@ -20,6 +20,7 @@ public:
 		stamp.setOutlineThickness(2);
 		stamp.setSize(Vector2f(SIZE, SIZE));
 		stamp.setOutlineColor(nColor);
+		stamp.setFillColor(Color::Transparent);
 	}
 	virtual void draw(RenderWindow& win)
 	{

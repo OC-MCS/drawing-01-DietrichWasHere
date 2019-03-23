@@ -7,6 +7,7 @@
 #include <fstream>
 using namespace std;
 #include <SFML\Graphics.hpp>
+#include <cctype>
 #include "SettingsMgr.h"
 #include "ShapeMgr.h"
 #include "SettingsUI.h"
@@ -29,8 +30,23 @@ int main()
 	SettingsUI  settingsUI(&settingsMgr); 
 	ShapeMgr    shapeMgr;
 	DrawingUI   drawingUI(Vector2f(200, 50));
+	fstream file;
 	
 	// ********* Add code here to make the managers read from shapes file (if the file exists)
+	char loadFile;
+	cout << "Load file (Y / N)? ";
+	cin >> loadFile;
+
+
+	if (tolower(loadFile) == 'y')
+	{
+		file.open("shapes.bin", ios::in | ios::out | ios::binary);
+
+	}
+	else
+	{
+		file.open("shapes.bin", ios::out | ios::binary);
+	}
 
 	while (window.isOpen()) 
 	{
