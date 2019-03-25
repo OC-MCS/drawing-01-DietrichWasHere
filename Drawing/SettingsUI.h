@@ -70,7 +70,27 @@ public:
 		greenBtn.setRadius(RADIUS);
 		greenBtn.setOutlineThickness(2);
 		greenBtn.setOutlineColor(Color::Green);
+	
+		shapeTxt.setFont(font);
+		shapeTxt.setFillColor(Color::Black);
+		shapeTxt.setCharacterSize(25);
+		shapeTxt.setString("Selected Shape");
+		shapeTxt.setPosition(UI_WIDTH / 20, (UI_HEIGHT * 6) / 10);
 
+		circleBtn.setPosition(Vector2f((UI_WIDTH - RADIUS) / 2, (UI_HEIGHT * 7) / 10));
+		circleBtn.setRadius(RADIUS);
+		circleBtn.setOutlineThickness(2);
+		circleBtn.setOutlineColor(Color::Black);
+
+		sqrBtn.setPosition(Vector2f((UI_WIDTH - RADIUS) / 2, (UI_HEIGHT * 8) / 10));
+		sqrBtn.setOutlineThickness(2);
+		sqrBtn.setSize(Vector2f(RADIUS * 2, RADIUS * 2));
+		sqrBtn.setOutlineColor(Color:: Black);
+	}
+
+	// load presets from mgr
+	void loadPresets()
+	{
 		// load presets
 		if (mgr->getCurColor() == Color::Red)
 		{
@@ -90,23 +110,6 @@ public:
 			blueBtn.setFillColor(Color::Transparent);
 			greenBtn.setFillColor(Color::Green);
 		}
-		
-		shapeTxt.setFont(font);
-		shapeTxt.setFillColor(Color::Black);
-		shapeTxt.setCharacterSize(25);
-		shapeTxt.setString("Selected Shape");
-		shapeTxt.setPosition(UI_WIDTH / 20, (UI_HEIGHT * 6) / 10);
-
-		circleBtn.setPosition(Vector2f((UI_WIDTH - RADIUS) / 2, (UI_HEIGHT * 7) / 10));
-		circleBtn.setRadius(RADIUS);
-		circleBtn.setOutlineThickness(2);
-		circleBtn.setOutlineColor(Color::Black);
-
-		sqrBtn.setPosition(Vector2f((UI_WIDTH - RADIUS) / 2, (UI_HEIGHT * 8) / 10));
-		sqrBtn.setOutlineThickness(2);
-		sqrBtn.setSize(Vector2f(RADIUS * 2, RADIUS * 2));
-		sqrBtn.setOutlineColor(Color:: Black);
-
 		// load presets
 		if (mgr->getCurShape() == ShapeEnum::CIRCLE)
 		{
@@ -119,6 +122,7 @@ public:
 			sqrBtn.setFillColor(Color::Black);
 		}
 	}
+
 	// use mouse position to determine ui action
 	void handleMouseUp(Vector2f mouse)
 	{

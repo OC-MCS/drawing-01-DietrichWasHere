@@ -31,7 +31,7 @@ int main()
 	SettingsMgr settingsMgr(Color::Red, ShapeEnum::CIRCLE);
 	SettingsUI  settingsUI(&settingsMgr); 
 	ShapeMgr    shapeMgr;
-	DrawingUI   drawingUI(Vector2f(200, 50));
+	DrawingUI   drawingUI(Vector2f(200, 0), Vector2f(WINDOW_WIDTH, WINDOW_HEIGHT), 25);
 	fstream file; // file storage
 	
 	// ********* Add code here to make the managers read from shapes file (if the file exists)
@@ -47,6 +47,7 @@ int main()
 		settingsMgr.loadFromFile(file);
 		shapeMgr.loadFile(file);
 		file.close();
+		settingsUI.loadPresets();
 	}
 
 	while (window.isOpen()) 

@@ -13,7 +13,7 @@ private:
 public:
 	// constructor; used in other classes constructors;
 	// create the square from location, color
-	Square(Vector2f nPos, Color nColor) : DrawingShape(CIRCLE)
+	Square(Vector2f nPos, Color nColor) : DrawingShape(SQUARE)
 	{
 		const int SIZE = 40;
 		stamp.setPosition(nPos);
