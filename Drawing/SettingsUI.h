@@ -170,8 +170,8 @@ public:
 	}
 	// hmmm... not sure the destructor is working
 	// fixed if you close out of the text window
+	// Fixed
 	~SettingsUI()
 	{
-		delete[] mgr;
 	}
 };
