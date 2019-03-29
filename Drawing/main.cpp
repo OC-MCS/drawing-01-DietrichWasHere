@@ -16,7 +16,7 @@ using namespace sf;
 
 // Finish this code. Other than where it has comments telling you to 
 // add code, you shouldn't need to add any logic to main to satisfy
-// the requirements of this programming assignment
+// the requirements of this programming assignment 
 
 // run the program
 int main()
